@@ -9,6 +9,6 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 ## How to Start
 
 - `npx degit kurotanshi/shopping-cart-vite3 [project name]`
+- `cd [project name]`
 - `npm i`
-
 - `npm run dev`
