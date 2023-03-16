@@ -36,6 +36,14 @@ fetch('/comment.json')
             </ul>
           </div>
         </div>
+
+        <!-- 搜尋 -->
+        <div class="mr-10">
+          <label class="block relative">
+            <i class="absolute top-3 left-3 fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="border text-xl py-1 pl-9">
+          </label>
+        </div>
       </nav>
     </header>
 
