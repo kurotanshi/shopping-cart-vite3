@@ -1,21 +1,4 @@
 <script setup>
-import { ref, reactive, computed } from 'vue';
-
-const list = ref([]);
-const commentLists = ref([]);
-
-fetch('/list.json')
-  .then(d => d.json())
-  .then(res => {
-    list.value = res;
-  });
-
-fetch('/comment.json')
-  .then(d => d.json())
-  .then(res => {
-    commentLists.value = res;
-  });
-
 </script>
 
 <template>
@@ -40,7 +23,7 @@ fetch('/comment.json')
         <!-- 搜尋 -->
         <div class="mr-10">
           <label class="block relative">
-            <i class="absolute top-3 left-3 fa-solid fa-magnifying-glass"></i>
+            <i class="top-3 left-3 absolute fa-solid fa-magnifying-glass"></i>
             <input type="text" class="border text-xl py-1 pl-9">
           </label>
         </div>
@@ -51,7 +34,7 @@ fetch('/comment.json')
       <div class="row items">
         <div class="col-sm-2">
           <div class="card" data-product-id="624946E">
-            <img src="images/cat001.jpg" class="card-img-top" alt="">
+            <img src="/images/cat001.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">老大</h5>
               <p class="price">$20</p>
@@ -61,7 +44,7 @@ fetch('/comment.json')
         </div>
         <div class="col-sm-2">
           <div class="card" data-product-id="044464F">
-            <img src="images/cat002.jpg" class="card-img-top" alt="">
+            <img src="/images/cat002.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">貝貝</h5>
               <p class="price">$15</p>
@@ -71,7 +54,7 @@ fetch('/comment.json')
         </div>
         <div class="col-sm-2">
           <div class="card" data-product-id="A6245B4">
-            <img src="images/cat003.jpg" class="card-img-top" alt="">
+            <img src="/images/cat003.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">老虎</h5>
               <p class="price">$10</p>
@@ -81,7 +64,7 @@ fetch('/comment.json')
         </div>
         <div class="col-sm-2">
           <div class="card" data-product-id="09DC594">
-            <img src="images/cat004.jpg" class="card-img-top" alt="">
+            <img src="/images/cat004.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">胖胖</h5>
               <p class="price">$8.5</p>
@@ -91,7 +74,7 @@ fetch('/comment.json')
         </div>
         <div class="col-sm-2">
           <div class="card" data-product-id="AAE759E">
-            <img src="images/cat005.jpg" class="card-img-top" alt="">
+            <img src="/images/cat005.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">小花</h5>
               <p class="price">$9.99</p>
@@ -101,7 +84,7 @@ fetch('/comment.json')
         </div>
         <div class="col-sm-2">
           <div class="card" data-product-id="D014739">
-            <img src="images/cat006.jpg" class="card-img-top" alt="">
+            <img src="/images/cat006.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">黑臉</h5>
               <p class="price">$12.5</p>
@@ -143,17 +126,17 @@ fetch('/comment.json')
   <!-- modal -->
   <div
     v-show="false"
-    class="fixed bg-opacity-75 bg-slate-900 w-full h-full top-0 left-0">
-    <div class="relative bg-white w-2/3 h-[75vh] border-2 mx-auto top-[12vh] overflow-y-scroll p-4">
+    class="h-full bg-opacity-75 bg-slate-900 w-full top-0 left-0 fixed">
+    <div class="bg-white mx-auto border-2 h-[75vh] p-4 top-[12vh] w-2/3 relative overflow-y-scroll">
       <h2 class="text-center mb-4">老大</h2>
 
-      <div class="flex justify-center w-full h-60 bg-no-repeat bg-top bg-contain"
+      <div class="bg-no-repeat bg-top bg-contain flex h-60 w-full justify-center"
         style="background-image: url('images/cat001.jpg')">
       </div>
 
       <ul class="my-4 px-4">
         <li 
-          class="block py-4 border-bottom text-xl leading-8">
+          class="border-bottom text-xl py-4 leading-8 block">
           <div><i class="fas fa-user"></i> <span class="ml-4">user123</span></div>
           <div><i class="fas fa-star"></i> <span class="ml-4">5</span></div>
           <div>
