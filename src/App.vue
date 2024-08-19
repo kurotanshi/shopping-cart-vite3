@@ -108,13 +108,33 @@
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>商品1</td>
+              <td>3</td>
+              <td>$10</td>
+              <td>$30</td>
+              <td><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></td>
+            </tr>
+            <tr>
+              <td>商品2</td>
+              <td>2</td>
+              <td>$15</td>
+              <td>$30</td>
+              <td><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></td>
+            </tr>
+            <tr>
+              <td>商品3</td>
+              <td>1</td>
+              <td>$20</td>
+              <td>$20</td>
+              <td><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></td>
+            </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="2"></td>
+              <td colspan="3"></td>
               <td>總價</td>
-              <td><span class="total-price">$0</span></td>
-              <td></td>
+              <td><span class="total-price">$ 99999</span></td>
             </tr>
           </tfoot>
         </table>
