@@ -1,4 +1,14 @@
 <script setup>
+import { ref } from 'vue';
+const catList = ref([]);
+
+// 取得商品列表
+fetch('/list.json')
+  .then(res => res.json())
+  .then(data => {
+    catList.value = data;
+  });
+
 </script>
 
 <template>
@@ -37,7 +47,7 @@
             <img src="/images/cat001.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">老大</h5>
-              <p class="price">$20</p>
+              <p>$20 / 庫存: 7</p>
               <button class="btn btn-sm btn-warning fw-light"><i class="fas fa-cat"></i></button>
             </div>
           </div>
@@ -47,7 +57,7 @@
             <img src="/images/cat002.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">貝貝</h5>
-              <p class="price">$15</p>
+              <p>$15 / 庫存: 3</p>
               <button class="btn btn-sm btn-warning fw-light"><i class="fas fa-cat"></i></button>
             </div>
           </div>
@@ -57,7 +67,7 @@
             <img src="/images/cat003.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">老虎</h5>
-              <p class="price">$10</p>
+              <p>$10 / 庫存: 9</p>
               <button class="btn btn-sm btn-warning fw-light"><i class="fas fa-cat"></i></button>
             </div>
           </div>
@@ -67,7 +77,7 @@
             <img src="/images/cat004.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">胖胖</h5>
-              <p class="price">$8.5</p>
+              <p>$12 / 庫存: 5</p>
               <button class="btn btn-sm btn-warning fw-light"><i class="fas fa-cat"></i></button>
             </div>
           </div>
@@ -77,7 +87,7 @@
             <img src="/images/cat005.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">小花</h5>
-              <p class="price">$9.99</p>
+              <p>$9 / 庫存: 12</p>
               <button class="btn btn-sm btn-warning fw-light"><i class="fas fa-cat"></i></button>
             </div>
           </div>
@@ -87,24 +97,25 @@
             <img src="/images/cat006.jpg" class="card-img-top" alt="">
             <div class="card-body">
               <h5 class="card-title fw-light fs-6">黑臉</h5>
-              <p class="price">$12.5</p>
+              <p>$22 / 庫存: 8</p>
               <button class="btn btn-sm btn-warning fw-light"><i class="fas fa-cat"></i></button>
             </div>
           </div>
         </div>
       </div>
-      <hr>
+
+      <hr class="my-12">
 
       <section class="cart">
         <h2>購物車</h2>
         <table class="table cart-item-table">
           <thead>
             <tr>
-              <th scope="col">項目</th>
-              <th scope="col">數量</th>
-              <th scope="col">單價</th>
-              <th scope="col">小計</th>
-              <th scope="col"></th>
+              <th scope="col" class="w-1/5">項目</th>
+              <th scope="col" class="w-1/5">數量</th>
+              <th scope="col" class="w-1/5">單價</th>
+              <th scope="col" class="w-1/5">小計</th>
+              <th scope="col" class="w-1/5"></th>
             </tr>
           </thead>
           <tbody>
@@ -113,28 +124,39 @@
               <td>3</td>
               <td>$10</td>
               <td>$30</td>
-              <td><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></td>
+              <td>
+                <button class="mr-4 btn btn-sm btn-warning"><i class="fas fa-plus"></i></button>
+                <button class="mr-4 btn btn-sm btn-warning"><i class="fas fa-minus"></i></button>
+                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </td>
             </tr>
             <tr>
               <td>商品2</td>
               <td>2</td>
               <td>$15</td>
               <td>$30</td>
-              <td><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></td>
+              <td>
+                <button class="mr-4 btn btn-sm btn-warning"><i class="fas fa-plus"></i></button>
+                <button class="mr-4 btn btn-sm btn-warning"><i class="fas fa-minus"></i></button>
+                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </td>
             </tr>
             <tr>
               <td>商品3</td>
               <td>1</td>
               <td>$20</td>
               <td>$20</td>
-              <td><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></td>
+              <td>
+                <button class="mr-4 btn btn-sm btn-warning"><i class="fas fa-plus"></i></button>
+                <button class="mr-4 btn btn-sm btn-warning"><i class="fas fa-minus"></i></button>
+                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td colspan="3"></td>
-              <td>總價</td>
-              <td><span class="total-price">$ 99999</span></td>
+              <td colspan="2">總價: <span class="ml-8">$ 99,999</span></td>
             </tr>
           </tfoot>
         </table>
@@ -142,29 +164,4 @@
       </section>
     </section>
   </main>
-
-  <!-- modal -->
-  <div
-    v-show="false"
-    class="h-full bg-opacity-75 bg-slate-900 w-full top-0 left-0 fixed">
-    <div class="bg-white mx-auto border-2 h-[75vh] p-4 top-[12vh] w-2/3 relative overflow-y-scroll">
-      <h2 class="text-center mb-4">老大</h2>
-
-      <div class="bg-no-repeat bg-top bg-contain flex h-60 w-full justify-center"
-        style="background-image: url('images/cat001.jpg')">
-      </div>
-
-      <ul class="my-4 px-4">
-        <li 
-          class="border-bottom text-xl py-4 leading-8 block">
-          <div><i class="fas fa-user"></i> <span class="ml-4">user123</span></div>
-          <div><i class="fas fa-star"></i> <span class="ml-4">5</span></div>
-          <div>
-            <i class="fas fa-comments"></i>
-            <div class="-mt-7 pl-10">這隻貓咪很可愛，而且很聽話，非常容易照顧。</div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
 </template>
